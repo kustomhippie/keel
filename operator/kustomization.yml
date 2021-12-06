@@ -1,0 +1,34 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - serviceaccount.yml
+  - clusterrole.yml
+  - clusterrolebinding.yml
+  - service.yml
+  - deployment.yml
+
+configMapGenerator:
+  - name: keel-operator
+    options:
+      labels:
+        app.kubernetes.io/name: keel
+        app.kubernetes.io/component: operator
+    literals:
+      - DEBUG=false
+      - POLL=true
+      - AUTHENTICATED_WEBHOOKS=false
+      - NOTIFICATION_LEVEL=info
+
+secretGenerator:
+  - name: keel-operator
+    options:
+      labels:
+        app.kubernetes.io/name: keel
+        app.kubernetes.io/component: operator
+    literals:
+      - BASIC_AUTH_USER=admin
+      - BASIC_AUTH_PASSWORD=admin
+
+...

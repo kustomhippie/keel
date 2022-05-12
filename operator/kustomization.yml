@@ -31,4 +31,9 @@ secretGenerator:
       - BASIC_AUTH_USER=admin
       - BASIC_AUTH_PASSWORD=admin
 
+images:
+  - name: keel-operator
+    newName: keelhq/keel
+    newTag: "latest"
+
 ...

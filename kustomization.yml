@@ -5,9 +5,4 @@ kind: Kustomization
 resources:
   - operator/
 
-images:
-  - name: keel-operator
-    newName: keelhq/keel
-    newTag: "latest"
-
 ...
